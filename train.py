@@ -21,7 +21,7 @@ from utils import plot_spectrogram, scan_checkpoint, load_checkpoint, save_check
 torch.backends.cudnn.benchmark = True
 
 
-def train(rank, a, h):
+def train(rank, a, h):   # a=input arguments, h=JSON params from config file
     if h.num_gpus > 1:
         init_process_group(backend=h.dist_config['dist_backend'], init_method=h.dist_config['dist_url'],
                            world_size=h.dist_config['world_size'] * h.num_gpus, rank=rank)
